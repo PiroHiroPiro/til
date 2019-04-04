@@ -42,10 +42,10 @@ def binary_search(number: int, target: list) -> int:
 
 if __name__ == "__main__":
     numbers = list(range(10000))
-    shuffle_numbers = sample(numbers)
+    shuffle_numbers = sample(numbers, len(numbers))
     target_number = choice(numbers)
     shuffle_numbers = shuffle_numbers[:(int(len(shuffle_numbers) / 2))]
-    print(target_number, shuffle_numbers, target_number in shuffle_numbers)
+    # print(target_number, shuffle_numbers, target_number in shuffle_numbers)
 
     found = linear_search(target_number, shuffle_numbers)
     print(found)
