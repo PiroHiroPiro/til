@@ -475,3 +475,9 @@ pyvenv.cfg
 pip-selfcheck.json
 
 # End of https://www.gitignore.io/api/c,clion,pycharm,phpstorm,code,go,linux,laravel,macos,venv,python,git
+
+# Custom ignore
+
+python_lecture_sphinx/siritori.pkl
+python_lecture_sphinx/svc.pkl.cmp
+python_lecture_sphinx/predict_result.csv
