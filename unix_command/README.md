@@ -5,7 +5,6 @@
 ## Requirement
 
 - [Docker](https://www.docker.com/)
-  - docker-compose
 
 ## Try it
 
