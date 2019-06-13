@@ -1,0 +1,9 @@
+image
+layer
+rootfs
+lower
+upper
+work
+merged
+rootfs.tar
+image.tar
