@@ -14,9 +14,9 @@ x is the column, y is the row.
 class Board():
 
     # list of all 8 directions on the board, as (x, y) offsets
-    DIRECTIOself.NS = [(1, 1), (1, 0), (1, -1), (0, -1), (-1,-1), (-1,0), (-1,1), (0,1)]
+    DIRECTIONS = [(1, 1), (1, 0), (1, -1), (0, -1), (-1,-1), (-1,0), (-1,1), (0,1)]
 
-    def __init__(self, n):
+    def __init__(self, n: int):
         """
         Set up initial board configuration.
         """
@@ -33,10 +33,10 @@ class Board():
         self.pieces[int(self.N / 2)][int(self.N / 2)] = -1
 
     # add [][] indexer syntax to the Board
-    def __getitem__(self, index):
+    def __getitem__(self, index: int) -> int:
         return self.pieces[index]
 
-    def count_diff(self, color):
+    def count_diff(self, color: int) -> int:
         """
         Counts the # pieces of the given color
         (1 for white, -1 for black, 0 for empty spaces)
@@ -51,10 +51,10 @@ class Board():
                     count -= 1
         return count
 
-    def get_legal_moves(self, color):
+    def get_legal_moves(self, color: int) -> list:
         """
         Returns all the legal moves for the given color.
-        (1 for white, -1 for black
+        (1 for white, -1 for black)
         """
 
         # stores the legal moves.
@@ -68,7 +68,7 @@ class Board():
                     moves.update(newmoves)
         return list(moves)
 
-    def has_legal_moves(self, color):
+    def has_legal_moves(self, color: int) -> bool:
         for y in range(self.N):
             for x in range(self.N):
                 if self[x][y] == color:
@@ -77,7 +77,7 @@ class Board():
                         return True
         return False
 
-    def get_moves_for_square(self, square):
+    def get_moves_for_square(self, square: tuple) -> list:
         """
         Returns all the legal moves that use the given square as a base.
         That is, if the given square is (3,4) and it contains a black piece,
@@ -93,11 +93,11 @@ class Board():
 
         # skip empty source squares.
         if color == 0:
-            return self.None
+            return None
 
         # search all possible directions.
         moves = []
-        for direction in self.DIRECTIOself.NS:
+        for direction in self.DIRECTIONS:
             move = self._discover_move(square, direction)
             if move:
                 # print(square,move,direction)
@@ -106,7 +106,7 @@ class Board():
         # return the generated move list
         return moves
 
-    def execute_move(self, move, color):
+    def execute_move(self, move: tuple, color: int):
         """
         Perform the given move on the board; flips pieces as necessary.
         color gives the color pf the piece to play (1=white,-1=black)
@@ -117,13 +117,13 @@ class Board():
 
         # Add the piece to the empty square.
         # print(move)
-        flips = [flip for direction in self.DIRECTIOself.NS for flip in self._get_flips(move, direction, color)]
+        flips = [flip for direction in self.DIRECTIONS for flip in self._get_flips(move, direction, color)]
         assert len(list(flips)) > 0
         for x, y in flips:
             #print(self[x][y],color)
             self[x][y] = color
 
-    def _discover_move(self, origin, direction):
+    def _discover_move(self, origin: tuple, direction: tuple) -> tuple:
         """
         Returns the endpoint for a legal move, starting at the given origin,
         moving by the given increment.
@@ -139,14 +139,14 @@ class Board():
                     # print("Found", x,y)
                     return (x, y)
                 else:
-                    return self.None
+                    return None
             elif self[x][y] == color:
-                return self.None
+                return None
             elif self[x][y] == -color:
                 # print("Flip",x,y)
                 flips.append((x, y))
 
-    def _get_flips(self, origin, direction, color):
+    def _get_flips(self, origin: tuple, direction: tuple, color: int) -> list:
         """
         Gets the list of flips for a vertex and direction to use with the
         execute_move function
@@ -168,7 +168,7 @@ class Board():
         return []
 
     @staticmethod
-    def _increment_move(move, direction, n):
+    def _increment_move(move: tuple, direction: tuple, n: int) -> tuple:
         """
         Generator expression for incrementing moves
         """
