@@ -112,7 +112,7 @@ class Board():
         color gives the color pf the piece to play (1=white,-1=black)
         """
 
-        #Much like move generation, start at the new piece's square and
+        #Much like move generation, start at the new piece"s square and
         #follow it on all 8 directions to look for a piece allowing flipping.
 
         # Add the piece to the empty square.
@@ -175,9 +175,9 @@ class Board():
 
         # print(move)
         move = list(map(sum, zip(move, direction)))
-        #move = (move[0]+direction[0], move[1]+direction[1])
+        #move = (move[0] + direction[0], move[1] + direction[1])
         while all(map(lambda x: 0 <= x < n, move)):
-        #while 0<=move[0] and move[0]<n and 0<=move[1] and move[1]<n:
+        #while 0 <= move[0] and move[0] < n and 0 <= move[1] and move[1] < n:
             yield move
-            move=list(map(sum,zip(move,direction)))
-            #move = (move[0]+direction[0],move[1]+direction[1])
+            move = list(map(sum,zip(move,direction)))
+            #move = (move[0] + direction[0], move[1] + direction[1])

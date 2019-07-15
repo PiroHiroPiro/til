@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from logic import Board
 import numpy as np
 
+from board import Board
 
-class OthelloGame():
+
+class Game():
     """
     This class specifies the base Game class.
     To define your own game, subclass this class and implement the functions below.
@@ -13,10 +14,10 @@ class OthelloGame():
     See othello/OthelloGame.py for an example implementation.
     """
 
-    def __init__(self, n=8):
+    def __init__(self, n: int = 8):
         self.N = n
 
-    def getInitBoard(self):
+    def getInitBoard(self) -> np.ndarray:
         """
         Returns:
             startBoard: a representation of the board (ideally this is the form that will be the input to your neural network)
@@ -25,7 +26,7 @@ class OthelloGame():
         b = Board(self.N)
         return np.array(b.pieces)
 
-    def getBoardSize(self):
+    def getBoardSize(self) -> tuple:
         """
         Returns:
             (x,y):  a tuple of board dimensions
@@ -33,7 +34,7 @@ class OthelloGame():
 
         return (self.N, self.N)
 
-    def getActionSize(self):
+    def getActionSize(self) -> int:
         """
         Returns:
             actionSize: number of all possible actions
@@ -41,7 +42,7 @@ class OthelloGame():
 
         return self.N * self.N + 1
 
-    def getNextState(self, board, player, action):
+    def getNextState(self, board: Board, player: int, action: int) -> (np.ndarray, int):
         """
         Input:
             board:  current board
@@ -60,7 +61,7 @@ class OthelloGame():
         b.execute_move(move, player)
         return (b.pieces, -player)
 
-    def getValidMoves(self, board, player):
+    def getValidMoves(self, board: Board, player: int) -> np.ndarray:
         """
         Input:
             board:  current board
@@ -80,7 +81,7 @@ class OthelloGame():
             valids[self.N * x + y]=1
         return np.array(valids)
 
-    def getGameEnded(self, board, player):
+    def getGameEnded(self, board: Board, player: int) -> int:
         """
         Input:
             board:  current board
@@ -100,7 +101,7 @@ class OthelloGame():
             return 1
         return -1
 
-    def getCanonicalForm(self, board, player):
+    def getCanonicalForm(self, board: Board, player: int) -> int:
         """
         Input:
             board:  current board
@@ -116,7 +117,7 @@ class OthelloGame():
         # return state if player==1, else return -state if player==-1
         return player * board
 
-    def getSymmetries(self, board, pi):
+    def getSymmetries(self, board: Board, pi: list) -> list:
         """
         Input:
             board:  current board
@@ -142,7 +143,7 @@ class OthelloGame():
                 l += [(newB, list(newPi.ravel()) + [pi[-1]])]
         return l
 
-    def stringRepresentation(self, board):
+    def stringRepresentation(self, board: Board) -> str:
         """
         Input:
             board:  current board
@@ -154,12 +155,12 @@ class OthelloGame():
         # 8x8 numpy array (canonical board)
         return board.tostring()
 
-    def getScore(self, board, player):
+    def getScore(self, board: Board, player: int) -> int:
         b = Board(self.N)
         b.pieces = np.copy(board)
         return b.countDiff(player)
 
-def display(board):
+def display(board: Board):
     n = board.shape[0]
 
     for y in range(n):
