@@ -6,8 +6,10 @@ from textwrap import dedent
 from time import time
 from uuid import uuid4
 from urllib.parse import urlparse
+
 from flask import Flask, jsonify, request
 import requests
+
 
 class Blockchain(object):
     def __init__(self):
@@ -176,6 +178,7 @@ class Blockchain(object):
 
         return False
 
+
 # ノードを作る
 app = Flask(__name__)
 
@@ -184,6 +187,7 @@ node_identifire = str(uuid4()).replace('-', '')
 
 # ブロックチェーンクラスをインスタンス化する
 blockchain = Blockchain()
+
 
 # メソッドはPOSTで/transactions/newエンドポイントを作る。メソッドはPOSTなのでデータを送信する
 @app.route('/transactions/new', methods=['POST'])
@@ -200,6 +204,7 @@ def new_transactions():
 
     response = {'message': f'トランザクションはブロック {index} に追加されました'}
     return jsonify(response), 201
+
 
 # メソッドはGETで/mineエンドポイントを作る
 @app.route('/mine', methods=['GET'])
@@ -229,6 +234,7 @@ def mine():
     }
     return jsonify(response), 200
 
+
 # メソッドはGETで、フルのブロックチェーンをリターンする/chainエンドポイントを作る
 @app.route('/chain', methods=['GET'])
 def full_chain():
@@ -237,6 +243,7 @@ def full_chain():
         'length': len(blockchain.chain),
     }
     return jsonify(response), 200
+
 
 @app.route('/nodes/register', methods=['POST'])
 def register_node():
@@ -255,6 +262,7 @@ def register_node():
     }
     return jsonify(response), 201
 
+
 @app.route('/nodes/resolve', methods=['GET'])
 def consensus():
     replaced = blockchain.resolve_conflicts()
@@ -272,6 +280,7 @@ def consensus():
 
     return jsonify(response), 200
 
+
 # port5000でサーバーを起動する
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5001)
+    app.run(host='0.0.0.0', port=5000)
