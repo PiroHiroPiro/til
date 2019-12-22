@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  go:
+    build:
+      context: .
+      dockerfile: ./docker/go/Dockerfile
+    container_name: go_handson_go
+    environment:
+      - TZ=Japan
+    ports:
+      - "80:80"
+    tty: true
+    volumes:
+      - ./source:/go/src/github.com/pirohiropiro
+    working_dir: /go/src/github.com/pirohiropiro
