@@ -9,7 +9,7 @@
 ## Try it
 
 ```console
-$ docker run -w /usr/src -it system_programming /bin/bash
+$ docker run -v $(pwd)/.:/usr/src -w /usr/src -it system_programming /bin/bash
 /usr/src# gcc -o fileinfo fileinfo.c
 /usr/src# ./fileinfo fileinfo.c
    mode: 100644

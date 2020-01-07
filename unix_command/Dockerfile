@@ -8,7 +8,3 @@ RUN apt-get update -y --fix-missing \
     manpages-dev \
     strace \
     gdb
-
-WORKDIR /usr/src
-
-COPY . .
