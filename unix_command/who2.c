@@ -55,17 +55,17 @@ void show_info(struct utmp *utbufp){
     return;
   }
 
-  ptintf("%-8.8s", utbufp->ut_name); //ログイン名
-  ptintf(" "); //スペース
-  ptintf("%-8.8s", utbufp->ut_line); //tty
-  ptintf(" "); //スペース
+  printf("%-8.8s", utbufp->ut_name); //ログイン名
+  printf(" "); //スペース
+  printf("%-8.8s", utbufp->ut_line); //tty
+  printf(" "); //スペース
   showtime(utbufp->ut_time); //ログイン時刻
   #ifdef SHOWHOST
     if(utbufp->ut_host[0] != '\0'){
-      ptintf("(%s)", utbufp->ut_host); //ホスト
+      printf("(%s)", utbufp->ut_host); //ホスト
     }
   #endif
-    ptintf("\n"); //改行
+    printf("\n"); //改行
 }
 
 void showtime(long timeval) {

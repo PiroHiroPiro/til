@@ -36,14 +36,14 @@ int main(){
  */
 
 void show_info(struct utmp *utbufp){
-  ptintf("%-8.8s", utbufp->ut_name); //ログイン名
-  ptintf(" "); //スペース
-  ptintf("%-8.8s", utbufp->ut_line); //tty
-  ptintf(" "); //スペース
-  ptintf("%10ld", utbufp->ut_time); //ログイン時刻
-  ptintf(" "); //スペース
+  printf("%-8.8s", utbufp->ut_name); //ログイン名
+  printf(" "); //スペース
+  printf("%-8.8s", utbufp->ut_line); //tty
+  printf(" "); //スペース
+  printf("%10ld", utbufp->ut_time); //ログイン時刻
+  printf(" "); //スペース
   #ifdef SHOWHOST
-    ptintf("(%s)", utbufp->ut_host); //ホスト
+    printf("(%s)", utbufp->ut_host); //ホスト
   #endif
-    ptintf("\n"); //改行
+    printf("\n"); //改行
 }
