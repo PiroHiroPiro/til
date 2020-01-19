@@ -4,8 +4,9 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [packages]
-Flask = "==0.12.2"
 requests = "==2.20.0"
+Flask = "==1.0"
+
 
 [requires]
 python_version = "3.7"
