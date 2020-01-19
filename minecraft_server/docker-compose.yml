@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  server:
+    image: itzg/minecraft-server
+    ports:
+      - "25565:25565"
+    tty: true
+    stdin_open: true
+    restart: always
+    volumes:
+      - ./data:/data
+      - ./server.properties:/data/server.properties
+    environment:
+      EULA: "TRUE"
+      VERSION: 1.14.3
+      MEMORY: 4G
