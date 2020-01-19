@@ -1,0 +1,29 @@
+version: 2
+jobs:
+  lint:
+    docker:
+      - image: python:3.7
+
+    steps:
+      - checkout
+      - run:
+          name: Install pipenv
+          command: pip install pipenv
+      - run:
+          name: Copy Pipfile
+          command: cp ./source/Pipfile ./
+      - run:
+          name: Install dependencies
+          command: pipenv install --system --dev --skip-lock
+      - run:
+          name: Run pylint
+          command: pipenv run pylint
+      - run:
+          name: Run flake8
+          command: pipenv run flake
+
+workflows:
+  version: 2
+  build_deploy:
+    jobs:
+      - lint

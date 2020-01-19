@@ -1,0 +1,30 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pylint = "*"
+flake8 = "*"
+
+[packages]
+scipy = "*"
+numpy = "*"
+pandas = "*"
+matplotlib = "*"
+japanize-matplotlib = "*"
+opencv-python = "*"
+seaborn = "*"
+pydot = "*"
+graphviz = "*"
+jupyter = "*"
+tqdm = "*"
+joblib = "*"
+torch-encoding = "*"
+
+[requires]
+python_version = "3.7"
+
+[scripts]
+pylint = "pylint source/ --disable='C0103,C0111,C0301,W0105'"
+flake = "flake8 --show-source source/ --ignore='E501'"
