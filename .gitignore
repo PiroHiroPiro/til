@@ -1033,4 +1033,9 @@ $RECYCLE.BIN/
 
 # Custom ignore
 Pipfile.lock
+<<<<<<< HEAD
 >>>>>>> b075047... Initial commit
+=======
+models/*
+!.gitkeep
+>>>>>>> f0709b9... add dir saving models
