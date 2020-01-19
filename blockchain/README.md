@@ -29,13 +29,6 @@ $ curl -X POST -H "Content-Type: application/json" -d '{
 
 ## Install
 
-Clone repository:
-
-```console
-$ git clone https://github.com/PiroHiroPiro/blockchain.git
-$ cd blockchain
-```
-
 Build image:
 
 ```console
