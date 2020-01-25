@@ -2,6 +2,7 @@
 
 - [hello_world](https://flutter.dev/docs/get-started/codelab#step-1-create-the-starter-flutter-app)
 - [startup_namer](https://flutter.dev/docs/get-started/codelab#step-1-create-the-starter-flutter-app)
+- [building_layout](https://flutter.dev/docs/development/ui/layout/tutorial)
 
 ## Requirement
 
