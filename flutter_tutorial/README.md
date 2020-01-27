@@ -48,7 +48,3 @@ Build image:
 ```console
 $ docker-compose build
 ```
-
-## Author
-
-[Hiroyuki Nishizawa](https://github.com/PiroHiroPiro)
