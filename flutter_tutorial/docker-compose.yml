@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  flutter:
+    build:
+      context: .
+      dockerfile: ./docker/flutter/Dockerfile
+      args:
+        FLUTTER_VERSION: "flutter_linux_v1.12.13+hotfix.5"
+    container_name: flutter_container
+    ports:
+      - 8080:8080
+    tty: true
+    volumes:
+      - ./source:/usr/src/source
+    working_dir: /usr/src/source
