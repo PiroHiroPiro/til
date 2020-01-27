@@ -39,8 +39,8 @@ Go to `http://localhost:8080` and you'll see the web page.
 Clone repository:
 
 ```console
-$ git clone https://github.com/PiroHiroPiro/flutter_tutorial.git
-$ cd flutter_tutorial
+$ git clone https://github.com/PiroHiroPiro/til.git
+$ cd til/flutter_tutorial
 ```
 
 Build image:
